@@ -4,10 +4,10 @@ Windows Registry Editor Version 5.00
 ;USE AT YOUR OWN RISK!
 ;USE AT YOUR OWN RISK!
 
-;Turn On Game Mode.
+;Turn Off Game Mode.
 [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
-"AllowAutoGameMode"=dword:00000001
-"AutoGameModeEnabled"=dword:00000001
+"AllowAutoGameMode"=dword:00000000
+"AutoGameModeEnabled"=dword:00000000
 
 ;Disables Fullscreen Optimizations, GameDVR and GameBar which is known to cause stutter and low FPS in games. Also fixes most game crashes.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
@@ -21,7 +21,7 @@ Windows Registry Editor Version 5.00
 
 ;Same as above.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
-"AllowGameDVR"="0"
+"AllowGameDVR"=dword:00000000
 
 ;Same as above.
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
@@ -29,23 +29,26 @@ Windows Registry Editor Version 5.00
 
 ;Unlocks the ability to modify sleeping CPU cores to improve performance and decrease stutter in games.
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\943c8cb6-6f93-4227-ad87-e9a3feec08d1]
-"Attributes"="2"
+"Attributes"=dword:00000002
 
 ;Improves system responsiveness and network speed.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
-"SystemResponsiveness"="00000000"
-"NetworkThrottlingIndex"="fffffff"
+"SystemResponsiveness"=dword:00000000
+"NetworkThrottlingIndex"=dword:ffffffff
 
 ;Marginally improves GPU performance and provides more power to games.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
+"Affinity"=dword:00000000
+"Background Only"="False"
+"Clock Rate"=dword:00002710
 "GPU Priority"="8"
-"Priority"="6"
+"Priority"="2"
 "Scheduling Category"="High"
 "SFIO Priority"="High"
 
 ;Maintenance Disabled.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
-"MaintenanceDisabled"="1"
+"MaintenanceDisabled"=dword:00000001
 
 ;Make sure your cores are unparked in regedit.
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318584]
@@ -88,14 +91,75 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
 "WaitToKillServiceTimeout"="2000"
 
-;Change processor scheduling in Windows.
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000026
 
 ;Resolves a memory leak in windows 10 through Registry.
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Ndu]
-"Start"="4"
+"Start"=dword:00000004
 
 ;Disable Windows Defender Exploit Protection Settings.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]
 "DisallowExploitProtectionOverride"=dword:00000001
+
+;Disable Windows Defender
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SpyNetReporting"=dword:00000000
+"SubmitSamplesConsent"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+"DontReportInfectionInformation"=dword:00000001
+
+;Split Threshold for Svhost.
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"SvcHostSplitThresholdInKB"=dword:00800000
+
+;Turn off LargeSystemCache
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"LargeSystemCache"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\microsoft\office\16.0\osm\preventedapplications]
+"accesssolution"=dword:00000001
+"olksolution"=dword:00000001
+"onenotesolution"=dword:00000001
+"pptsolution"=dword:00000001
+"projectsolution"=dword:00000001
+"publishersolution"=dword:00000001
+"visiosolution"=dword:00000001
+"wdsolution"=dword:00000001
+"xlsolution"=dword:00000001
+ 
+;DisableOfficeTelemetry
+[HKEY_CURRENT_USER\Software\Policies\microsoft\office\16.0\osm\preventedsolutiontypes]
+"agave"=dword:00000001
+"appaddins"=dword:00000001
+"comaddins"=dword:00000001
+"documentfiles"=dword:00000001
+"templatefiles"=dword:00000001
+
+;Disable Cortana
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowCortana"=dword:00000000
+"DisableWebSearch"=dword:00000001
+"ConnectedSearchUseWeb"=dword:00000000
+"ConnectedSearchUseWebOverMeteredConnections"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"DeviceHistoryEnabled"=dword:00000000
+"HistoryViewEnabled"=dword:00000000
+"AllowSearchToUseLocation"=dword:00000000
+"BingSearchEnabled"=dword:00000000
+"CortanaConsent"=dword:00000000
+
+;Disable Xbox Live
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblGameSave]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xbgm]
+"Start"=dword:00000004
