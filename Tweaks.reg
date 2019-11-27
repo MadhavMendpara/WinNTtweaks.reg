@@ -18,6 +18,8 @@ Windows Registry Editor Version 5.00
 "GameDVR_Enabled"="0"
 "GameDVR_FSEBehavior"=dword:00000002
 "GameDVR_FSEBehaviorMode"=dword:00000002
+"GameDVR_DXGIHonorFSEWindowsCompatible"=dword:00000001
+"GameDVR_HonorUserFSEBehaviorMode"=dword:00000001
 
 ;Same as above.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
@@ -38,9 +40,6 @@ Windows Registry Editor Version 5.00
 
 ;Marginally improves GPU performance and provides more power to games.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
-"Affinity"=dword:00000000
-"Background Only"="False"
-"Clock Rate"=dword:00002710
 "GPU Priority"="8"
 "Priority"="2"
 "Scheduling Category"="High"
@@ -63,6 +62,9 @@ Windows Registry Editor Version 5.00
 "ValueMax"="0"
 "ValueMin"="0"
 
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Power\PowerSettings\0012ee47-9041-4b5d-9b77-535fba8b1442\51dea550-bb38-4bc4-991b-eacf37be5ec8]
+"ValueMax"="0"
+"ValueMin"="0"
 ;Adds the "Copy To..." ability from Windows 7, when you right click files or folders, for easier file management.
 [HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To]
 @="{C2FBB630-2971-11D1-A18C-00C04FD75D13}"
@@ -173,5 +175,16 @@ Windows Registry Editor Version 5.00
 
 ;Disable mitigations
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"FeatureSettings"=dword:00000000
 "FeatureSettingsOverrideMask"=dword:00000003
 "FeatureSettingsOverride"=dword:00000003
+
+;Add_Install to cab_context_menu
+[-HKEY_CLASSES_ROOT\CABFolder\Shell\RunAs]
+
+[HKEY_CLASSES_ROOT\CABFolder\Shell\RunAs]
+@="Install"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\CABFolder\Shell\RunAs\Command]
+@="cmd /k dism /online /add-package /packagepath:\"%1\""
