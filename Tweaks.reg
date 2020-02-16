@@ -4,81 +4,22 @@ Windows Registry Editor Version 5.00
 ;USE AT YOUR OWN RISK!
 ;USE AT YOUR OWN RISK!
 
-;Turn Off Game Mode.
-[HKEY_CURRENT_USER\Software\Microsoft\GameBar]
-"AllowAutoGameMode"=dword:00000000
-"AutoGameModeEnabled"=dword:00000000
-
-;Disables Fullscreen Optimizations, GameDVR and GameBar which is known to cause stutter and low FPS in games. Also fixes most game crashes.
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
-"value"="00000000"
-
-;Same as above.
-[HKEY_CURRENT_USER\System\GameConfigStore]
-"GameDVR_Enabled"="0"
-"GameDVR_FSEBehavior"=dword:00000002
-"GameDVR_FSEBehaviorMode"=dword:00000002
-"GameDVR_DXGIHonorFSEWindowsCompatible"=dword:00000001
-"GameDVR_HonorUserFSEBehaviorMode"=dword:00000001
-
-;Same as above.
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
-"AllowGameDVR"=dword:00000000
-
-;Same as above.
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
-"AppCaptureEnabled"=dword:00000000
-
-;Unlocks the ability to modify sleeping CPU cores to improve performance and decrease stutter in games.
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\943c8cb6-6f93-4227-ad87-e9a3feec08d1]
-"Attributes"=dword:00000002
 
 ;Improves system responsiveness and network speed.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
-"SystemResponsiveness"=dword:00000000
+"SystemResponsiveness"=dword:00000001
 "NetworkThrottlingIndex"=dword:ffffffff
-
-;Marginally improves GPU performance and provides more power to games.
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
-"GPU Priority"="8"
-"Priority"="2"
-"Scheduling Category"="High"
-"SFIO Priority"="High"
 
 ;Maintenance Disabled.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
 "MaintenanceDisabled"=dword:00000001
 
-;Make sure your cores are unparked in regedit.
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318584]
-"ValueMax"="0"
-"ValueMin"="0"
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\ea062031-0e34-4ff1-9b6d-eb1059334028]
-"ValueMax"="0"
-"ValueMin"="0"
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\ea062031-0e34-4ff1-9b6d-eb1059334029]
-"ValueMax"="0"
-"ValueMin"="0"
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Power\PowerSettings\0012ee47-9041-4b5d-9b77-535fba8b1442\51dea550-bb38-4bc4-991b-eacf37be5ec8]
-"ValueMax"="0"
-"ValueMin"="0"
-;Adds the "Copy To..." ability from Windows 7, when you right click files or folders, for easier file management.
-[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To]
-@="{C2FBB630-2971-11D1-A18C-00C04FD75D13}"
-
-;Adds the "Move To..." ability from Windows 7, when you right click files or folders, for easier file management.
-[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Move To]
-@="{C2FBB631-2971-11D1-A18C-00C04FD75D13}"
-
 ;Slightly improves RAM management and overall system speed.
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "AutoEndTasks"="1"
-"HungAppTimeout"="1000"
-"MenuShowDelay"="8"
-"WaitToKillAppTimeout"="2000"
+"HungAppTimeout"="100"
+"MenuShowDelay"="0"
+"WaitToKillAppTimeout"="300"
 "LowLevelHooksTimeout"="1000"
 
 ;Disables unnecessary features present in the Explorer.
@@ -91,61 +32,18 @@ Windows Registry Editor Version 5.00
 
 ;Speeds up Shut Down time.
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
-"WaitToKillServiceTimeout"="2000"
-
+"WaitToKillServiceTimeout"="300"
 
 ;Resolves a memory leak in windows 10 through Registry.
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Ndu]
 "Start"=dword:00000004
 
-;Disable Windows Defender Exploit Protection Settings.
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]
-"DisallowExploitProtectionOverride"=dword:00000001
-
-;Disable Windows Defender Security Center
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
-"Start"=dword:00000004
-
-;Disable Windows Defender
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "DisableAntiSpyware"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
-"SpyNetReporting"=dword:00000000
-"SubmitSamplesConsent"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
-"DontReportInfectionInformation"=dword:00000001
-
-;Split Threshold for Svhost.
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
-"SvcHostSplitThresholdInKB"=dword:00800000
 
 ;Turn off LargeSystemCache
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "LargeSystemCache"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Policies\microsoft\office\16.0\osm\preventedapplications]
-"accesssolution"=dword:00000001
-"olksolution"=dword:00000001
-"onenotesolution"=dword:00000001
-"pptsolution"=dword:00000001
-"projectsolution"=dword:00000001
-"publishersolution"=dword:00000001
-"visiosolution"=dword:00000001
-"wdsolution"=dword:00000001
-"xlsolution"=dword:00000001
- 
-;DisableOfficeTelemetry
-[HKEY_CURRENT_USER\Software\Policies\microsoft\office\16.0\osm\preventedsolutiontypes]
-"agave"=dword:00000001
-"appaddins"=dword:00000001
-"comaddins"=dword:00000001
-"documentfiles"=dword:00000001
-"templatefiles"=dword:00000001
 
 ;Disable Cortana
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
@@ -161,30 +59,43 @@ Windows Registry Editor Version 5.00
 "BingSearchEnabled"=dword:00000000
 "CortanaConsent"=dword:00000000
 
-;Disable Xbox Live
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc]
-"Start"=dword:00000004
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager]
-"Start"=dword:00000004
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblGameSave]
-"Start"=dword:00000004
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc]
-"Start"=dword:00000004
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xbgm]
-"Start"=dword:00000004
-
 ;Disable mitigations
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "FeatureSettings"=dword:00000000
 "FeatureSettingsOverrideMask"=dword:00000003
 "FeatureSettingsOverride"=dword:00000003
 
-;Add_Install to cab_context_menu
-[-HKEY_CLASSES_ROOT\CABFolder\Shell\RunAs]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel]
+"DisableTsx"=dword:00000001
 
-[HKEY_CLASSES_ROOT\CABFolder\Shell\RunAs]
-@="Install"
-"HasLUAShield"=""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization]
+-"MinVmVersionForCpuBasedMitigations"="1.0"
 
-[HKEY_CLASSES_ROOT\CABFolder\Shell\RunAs\Command]
-@="cmd /k dism /online /add-package /packagepath:\"%1\""
+;Disable Power Throttling
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
+"PowerThrottlingOff"=dword:00000001
+
+;Zero Startup Delay
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+"StartupDelayInMSec"=dword:00000000
+
+;Disable Windows App tracking to improve Start and Search Results
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
+"DisableMFUTracking"=dword:00000001
+
+;This will make the taskbar clock show seconds
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowSecondsInSystemClock"=dword:00000001
+
+;Disable Windows Error Reporting
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+;Increase Taskbar Transparency Level
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"UseOLEDTaskbarTransparency"=dword:00000001
+
+; Disables app suggestions on start  
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
