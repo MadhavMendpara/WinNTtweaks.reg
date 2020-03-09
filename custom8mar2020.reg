@@ -84,8 +84,8 @@ Windows Registry Editor Version 5.00
 "Disabled"=dword:00000001
 
 ;Increase Taskbar Transparency Level
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"UseOLEDTaskbarTransparency"=dword:00000001
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;"UseOLEDTaskbarTransparency"=dword:00000001
 
 ; Disables app suggestions on start  
 
