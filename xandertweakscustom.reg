@@ -32,7 +32,7 @@ Windows Registry Editor Version 5.00
 
 ;=== Improves system responsiveness and network speed.
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
-"SystemResponsiveness"=dword:0000000a
+"SystemResponsiveness"=dword:00000000
 "NetworkThrottlingIndex"="fffffff"
 
 ;=== Marginally improves GPU performance and provides more power to games.
@@ -46,12 +46,12 @@ Windows Registry Editor Version 5.00
 "SFIO Priority"="High"
 
 ;=== Adds the "Copy To..." ability from Windows 7, when you right click files or folders, for easier file management.
-[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To]
-@="{C2FBB630-2971-11D1-A18C-00C04FD75D13}"
+;[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To]
+;@="{C2FBB630-2971-11D1-A18C-00C04FD75D13}"
 
 ;=== Adds the "Move To..." ability from Windows 7, when you right click files or folders, for easier file management.
-[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Move To]
-@="{C2FBB631-2971-11D1-A18C-00C04FD75D13}"
+;[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Move To]
+;@="{C2FBB631-2971-11D1-A18C-00C04FD75D13}"
 
 ;=== Slightly improves RAM management and overall system speed.
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -74,31 +74,31 @@ Windows Registry Editor Version 5.00
 "WaitToKillServiceTimeout"="2000"
 
 ;=== Disables mouse smoothing and acceleration for a more pleasent mouse experience and aim.
-[HKEY_CURRENT_USER\Control Panel\Mouse]
-"MouseSensitivity"="10"
-"SmoothMouseXCurve"=hex:\
-	00,00,00,00,00,00,00,00,\
-	C0,CC,0C,00,00,00,00,00,\
-	80,99,19,00,00,00,00,00,\
-	40,66,26,00,00,00,00,00,\
-	00,33,33,00,00,00,00,00
-"SmoothMouseYCurve"=hex:\
-	00,00,00,00,00,00,00,00,\
-	00,00,38,00,00,00,00,00,\
-	00,00,70,00,00,00,00,00,\
-	00,00,A8,00,00,00,00,00,\
-	00,00,E0,00,00,00,00,00
+;[HKEY_CURRENT_USER\Control Panel\Mouse]
+;"MouseSensitivity"="10"
+;"SmoothMouseXCurve"=hex:\
+;	00,00,00,00,00,00,00,00,\
+;	C0,CC,0C,00,00,00,00,00,\
+;	80,99,19,00,00,00,00,00,\
+;	40,66,26,00,00,00,00,00,\
+;	00,33,33,00,00,00,00,00
+;"SmoothMouseYCurve"=hex:\
+;	00,00,00,00,00,00,00,00,\
+;	00,00,38,00,00,00,00,00,\
+;	00,00,70,00,00,00,00,00,\
+;	00,00,A8,00,00,00,00,00,\
+;	00,00,E0,00,00,00,00,00
 
-[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
-"MouseSpeed"="0"
-"MouseThreshold1"="0"
-"MouseThreshold2"="0"
+;[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+;"MouseSpeed"="0"
+;"MouseThreshold1"="0"
+;"MouseThreshold2"="0"
 
 ;=== Fixes DPI scaling and blurry windows, text and elements.
-[HKEY_CURRENT_USER\Control Panel\Desktop]
-"Win8DpiScaling"=dword:00000000
-"DpiScalingVer"=dword:00001000
-"LogPixels"=dword:00000096
+;[HKEY_CURRENT_USER\Control Panel\Desktop]
+;"Win8DpiScaling"=dword:00000000
+;"DpiScalingVer"=dword:00001000
+;"LogPixels"=dword:00000096
 
 ;=== Tweaks to improve privacy and stop Microsoft from collecting your data.
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
